@@ -34,6 +34,22 @@ services:
     networks:
         - blizy-network
 
+  frontend:
+    tty: true
+    container_name: blizy_fronend
+    environment:
+      PORT: ${NUXT_PORT}
+      HOST: ${NUXT_HOST}
+    build:
+      context: ./frontend
+      dockerfile: ../Docker/frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 3000:3000
+    networks:
+      - blizy-network
+
   db:
     image: postgres:17
     container_name: blizy_db
