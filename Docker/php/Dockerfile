@@ -28,7 +28,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy application files
-COPY . .
+COPY ../../php .
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html

@@ -24,6 +24,15 @@ services:
     networks:
       - blizy-network
 
+  python:
+    tty: true
+    container_name: blizy_python
+    build:
+      dockerfile: ./Docker/python/Dockerfile
+    volumes:
+      - ./python:/app
+    networks:
+        - blizy-network
 
   db:
     image: postgres:17
