@@ -1,0 +1,26 @@
+name: blizy-homework
+
+services:
+  php:
+    container_name: blizy_php
+    build:
+      dockerfile: ./Docker/php/Dockerfile
+    volumes:
+      - ./php:/var/www/html
+    ports:
+      - 9000:9000
+
+  db:
+    image: postgres:17
+    container_name: blizy_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+  db-ui:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
