@@ -9,6 +9,21 @@ services:
       - ./php:/var/www/html
     ports:
       - 9000:9000
+    networks:
+      - blizy-network
+
+  nginx:
+    container_name: blizy_nginx
+    image: nginx:latest
+    volumes:
+      - ./Docker/nginx/setup.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./php:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "8000:80"
+    networks:
+      - blizy-network
+
 
   db:
     image: postgres:17
@@ -17,10 +32,15 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - blizy-network
 
   db-ui:
+    container_name: blizy_db_ui
     image: adminer
     restart: always
     ports:
       - 8080:8080
 
+networks:
+  blizy-network:
