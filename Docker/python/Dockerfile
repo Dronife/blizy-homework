@@ -7,6 +7,10 @@ WORKDIR /app
 COPY /../../python/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN playwright install
+
+RUN playwright install-deps
+
 # Copy your code
 COPY /../../python .
 

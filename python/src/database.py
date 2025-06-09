@@ -2,26 +2,40 @@ import os
 from sqlalchemy import create_engine, inspect
 from sqlalchemy.orm import sessionmaker, declarative_base
 from dotenv import load_dotenv
-from sqlalchemy import select
-
-from src.model.product import Product
 
 load_dotenv()
-print(__name__)
+
 
 class Database:
-    def __init__(self):
-        self.database_url = os.getenv("DATABASE_URL")
-        self.engine = create_engine(self.database_url)
-        self.SessionLocal = sessionmaker(bind=self.engine)
-        self.Base = declarative_base()
+    _instance = None
+    _engine = None
 
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance._init_once()
+        return cls._instance
+
+    def _init_once(self):
+        # run exactly once
+        self.database_url = os.getenv("DATABASE_URL")
+
+        if Database._engine is None:
+            Database._engine = create_engine(self.database_url, pool_pre_ping=True)
+            Database._SessionLocal = sessionmaker(bind=Database._engine)
+            Database._Base = declarative_base()
+
+        # share the same objects on every instance
+        self.engine = Database._engine
+        self.SessionLocal = Database._SessionLocal
+        self.Base = Database._Base
+
+    # helper methods
     def get_session(self):
         return self.SessionLocal()
-    
+
     def get_table_names(self):
-        inspector = inspect(db.engine)
+        inspector = inspect(self.engine)
         return inspector.get_table_names()
 
 db = Database()
-

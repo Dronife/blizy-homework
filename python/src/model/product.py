@@ -6,13 +6,13 @@ from sqlalchemy.orm import mapped_column
 from sqlalchemy import ForeignKey
 from sqlalchemy import Enum
 
-from src.model.base_model import Base
+from src.model.base import Base
 from src.enumerators.grade import GradeEnum
 from src.enumerators.condition import ConditionEnum
 
 class Product(Base):
     __tablename__ = "product"
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
     brand_id: Mapped[int] = mapped_column(ForeignKey("brand.id"))
     model_id: Mapped[int] = mapped_column(ForeignKey("model.id"))
