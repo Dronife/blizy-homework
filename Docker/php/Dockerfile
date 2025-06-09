@@ -11,13 +11,14 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     zlib1g-dev \
     libonig-dev \
-    curl
+    curl \
+    libpq-dev
 
 # Install PHP extensions
 RUN docker-php-ext-install \
     intl \
     pdo \
-    pdo_mysql \
+    pdo_pgsql \
     opcache \
     zip
 
