@@ -14,7 +14,6 @@ class Product(Base):
     __tablename__ = "product"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
-    brand_id: Mapped[int] = mapped_column(ForeignKey("brand.id"))
     model_id: Mapped[int] = mapped_column(ForeignKey("model.id"))
     grade: Mapped[GradeEnum] = mapped_column(Enum(GradeEnum), nullable=False)
     condition: Mapped[ConditionEnum] = mapped_column(Enum(ConditionEnum), nullable=False)

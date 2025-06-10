@@ -19,10 +19,6 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Brand $brand = null;
-
     #[ORM\Column(enumType: ProductGrade::class)]
     private ?ProductGrade $grade = null;
 
