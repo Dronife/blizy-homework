@@ -13,4 +13,4 @@ class Category(Base):
     brand_id: Mapped[int] = mapped_column(ForeignKey("brand.id"))
 
     def __repr__(self) -> str:
-        return f"Category(id={self.id!r}, name={self.name!r})"
+        return f"Category(id={self.id!r}, name={self.name!r}, brand_id={self.brand_id!r})"

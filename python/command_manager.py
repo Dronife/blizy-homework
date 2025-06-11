@@ -1,14 +1,14 @@
-from src.service.manager.category_scrape_manager import category_scrape_manager
+from src.service.manager.fundamentals_scrape_manager import fundamentals_scrape_manager
 
 def manage(argv):
     if len(argv) < 2:
-        print("No command provided. Use 'scrape-category' or 'scrape-products'")
+        print("No command provided. Use 'scrape-fundamentals' or 'scrape-products'")
         return
 
     command = argv[1]
 
-    if command == "scrape-category":
-        category_scrape_manager.scrape()
+    if command == "scrape-fundamentals":
+        fundamentals_scrape_manager.scrape()
     elif command == "scrape-products":
         print("Not implemented")
     else:

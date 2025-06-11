@@ -42,7 +42,7 @@ class CategoryScrapper():
 
             await browser.close()
 
-            return categories
+        return categories
 
 
 
