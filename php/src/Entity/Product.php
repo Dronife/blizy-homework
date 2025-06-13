@@ -29,11 +29,14 @@ class Product
     private ?ProductCondition $condition = null;
 
     #[ORM\Column(nullable: false)]
-    private ?int $price = null;
+    private ?float $price = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Model $model = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $color = null;
 
     public function getId(): ?int
     {
@@ -48,18 +51,6 @@ class Product
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
-
-        return $this;
-    }
-
-    public function getBrand(): ?Brand
-    {
-        return $this->brand;
-    }
-
-    public function setBrand(?Brand $brand): static
-    {
-        $this->brand = $brand;
 
         return $this;
     }
@@ -100,12 +91,12 @@ class Product
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): static
+    public function setPrice(float $price): static
     {
         $this->price = $price;
 
@@ -120,6 +111,18 @@ class Product
     public function setModel(?Model $model): static
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250611185439 extends AbstractMigration
+final class Version20250612125940 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,13 +21,7 @@ final class Version20250611185439 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql(<<<'SQL'
-            ALTER TABLE model ADD brand_id INT DEFAULT NULL
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE model ADD CONSTRAINT FK_D79572D944F5D008 FOREIGN KEY (brand_id) REFERENCES brand (id) NOT DEFERRABLE INITIALLY IMMEDIATE
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE INDEX IDX_D79572D944F5D008 ON model (brand_id)
+            ALTER TABLE product ALTER price TYPE DOUBLE PRECISION
         SQL);
     }
 
@@ -38,13 +32,7 @@ final class Version20250611185439 extends AbstractMigration
             CREATE SCHEMA public
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE model DROP CONSTRAINT FK_D79572D944F5D008
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP INDEX IDX_D79572D944F5D008
-        SQL);
-        $this->addSql(<<<'SQL'
-            ALTER TABLE model DROP brand_id
+            ALTER TABLE product ALTER price TYPE INT
         SQL);
     }
 }

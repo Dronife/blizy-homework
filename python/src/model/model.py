@@ -11,7 +11,7 @@ class Model(Base):
     __tablename__ = "model"
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    brand_id: Mapped[int] = mapped_column(ForeignKey("brand.id"))
+    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
 
     def __repr__(self) -> str:
-        return f"Model(id={self.id!r}, name={self.name!r}, brand_id={self.brand_id!r})"
+        return f"Model(id={self.id!r}, name={self.name!r}, category_id={self.category_id!r})"

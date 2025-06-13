@@ -1,4 +1,5 @@
 from src.service.manager.fundamentals_scrape_manager import fundamentals_scrape_manager
+from src.service.manager.product_scrape_manager import product_scrape_manager
 
 def manage(argv):
     if len(argv) < 2:
@@ -10,6 +11,6 @@ def manage(argv):
     if command == "scrape-fundamentals":
         fundamentals_scrape_manager.scrape()
     elif command == "scrape-products":
-        print("Not implemented")
+        product_scrape_manager.scrape()
     else:
         print(f"Unknown command: {command}")

@@ -17,7 +17,8 @@ class Model
     private ?string $name = null;
 
     #[ORM\ManyToOne]
-    private ?Brand $brand = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -36,14 +37,14 @@ class Model
         return $this;
     }
 
-    public function getBrand(): ?Brand
+    public function getCategory(): ?Category
     {
-        return $this->brand;
+        return $this->category;
     }
 
-    public function setBrand(?Brand $brand): static
+    public function setCategory(?Category $category): static
     {
-        $this->brand = $brand;
+        $this->category = $category;
 
         return $this;
     }
