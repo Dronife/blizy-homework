@@ -3,8 +3,10 @@ from src.service.dto.product import Product
 from src.service.util.category_util import CategoryUtil
 from src.repository.category_repository import category_repository
 from src.repository.model_repository import model_repository
+from src.repository.product_repository import product_repository
 from src.model.brand import Brand
 from src.model.model import Model
+from src.model.product import Product
 from src.database import db
 
 class ModelSynchronizer:
@@ -17,6 +19,9 @@ class ModelSynchronizer:
         for category_product in category_products: #type: CategoryProducts
             new_model_names = []
             existing_models = model_repository.fetch_all_by_category_id(category_product.category_id)
+            for existing_model in existing_models:
+                all_new_names.append(existing_model.name)
+
             for product in category_product.products: #type: Product
                 model_name = product.model
                 existing_model = self.get_existing_model(model_name, existing_models)
@@ -39,6 +44,7 @@ class ModelSynchronizer:
         self.database_session.commit()
 
         if models_to_keep:
+            db.deleteWithCondition(Product, ~Product.model_id.in_(models_to_keep))
             db.deleteWithCondition(Model, ~Model.id.in_(models_to_keep))
 
     def get_unique_names(self, new_names: list[str], all_names: list[str])-> set[str]:

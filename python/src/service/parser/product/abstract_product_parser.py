@@ -35,7 +35,7 @@ class AbstractProductParser:
         return grade.group(1).upper() if grade else None
 
     def extract_storage_size(self, text: str) -> int | None:
-        re_gb_num = re.compile(r'(\d+)\s*GB', re.I)  # grab every “number GB”
+        re_size = re.compile(r'(\d+)\s*(?:GB|TB)', re.I)  # match “number GB” or “number TB”
+        nums = re_size.findall(text)
 
-        nums = re_gb_num.findall(text)  # e.g. ['3', '32']
         return int(nums[-1]) if nums else None

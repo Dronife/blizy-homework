@@ -18,11 +18,14 @@ class ProductSynchronizer:
             new_by_bash: dict[str, ProductDto] = {ProductDtoUtil.get_hash(n): n for n in category_product.products}
             for key, new in new_by_bash.items(): #type: dict[str, ProductDto]
                 if key in existing_by_hash:
-                    product_transformer.dto_to_model(new, existing_by_hash[key])
+                    existing = existing_by_hash[key]
+                    product_transformer.dto_to_model(new, existing)
+                    existing.category_id = category_product.category_id
                     existing_by_hash.pop(key)
+
                     continue
 
-                self.create(new)
+                self.create(new, category_product.category_id)
 
             self.database_session.commit()
 
@@ -34,8 +37,9 @@ class ProductSynchronizer:
 
         return {ProductModelUtil.get_hash(e): e for e in existing_products}
 
-    def create(self, new: ProductDto) -> None:
+    def create(self, new: ProductDto, category_id: int) -> None:
         product = product_transformer.dto_to_model(new)
+        product.category_id = category_id
         self.database_session.add(product)
 
 product_synchronizer = ProductSynchronizer()

@@ -19,6 +19,9 @@ class ProductScrapper():
     async def extract_products(self):
         async with async_playwright() as playwright:
             categories = category_repository.fetch_all()
+            # [
+            #     Category(id=35, brand_id=5, name="2nd-life-iphone-11-pro-max"),
+            # ]
 
             browser = await playwright.chromium.launch(headless=True)
             page = await browser.new_page()
@@ -48,7 +51,9 @@ class ProductScrapper():
                         continue
 
                     products.append(product)
+                # exit()
                 category_products.append(CategoryProducts(category.id, products))
+                # return category_products
 
         return category_products
 

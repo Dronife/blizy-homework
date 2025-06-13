@@ -27,15 +27,12 @@ class DefaultProductParser(AbstractProductParser):
 
         product.storage = self.extract_storage_size(headline)
 
-        re_gb = re.compile(r'\b\d+\s*GB(?:\s*/\s*\d+\s*GB)?\b', re.I)
+        re_gb = re.compile(r'\s*\b\d+\s*(?:GB|TB)(?:\s*/\s*\d+\s*(?:GB|TB))?\b\s*', re.I)
         parts = re_gb.split(headline)
+
         product.model = parts[0]
         product.color = parts[1]
 
         return product
-
-
-
-
 
 default_product_parser = DefaultProductParser()

@@ -24,7 +24,7 @@ class NoPrefixProductParser(AbstractProductParser):
         headline = self.remove_words_grade(headline, product.grade)
         product.storage = self.extract_storage_size(headline)
 
-        re_gb = re.compile(r'\s*\b\d+\s*GB(?:\s*/\s*\d+\s*GB)?\b\s*', re.I)
+        re_gb = re.compile(r'\s*\b\d+\s*(?:GB|TB)(?:\s*/\s*\d+\s*(?:GB|TB))?\b\s*', re.I)
         parts = re_gb.split(headline)
         model_name = parts[0]+" "+parts[1]
 

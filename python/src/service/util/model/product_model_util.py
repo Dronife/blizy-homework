@@ -7,6 +7,7 @@ class ProductModelUtil:
 
     @staticmethod
     def get_hash(product: Product) -> str:
-        raw = f"{product.model.name}|{product.grade.value}|{product.condition.value}|{product.storage}|{product.color}".lower()
+        modelName = product.model.name if product.model else ""
+        raw = f"{modelName}|{product.grade.value}|{product.condition.value}|{product.storage}|{product.color}".lower()
 
         return md5(raw.encode()).hexdigest()
