@@ -25,3 +25,13 @@ services:
     tags: [ 'api_platform.filter' ]
     arguments:
       - { category.name: ~, model.name: ~, grade: ~, storage: ~, price: ~, color: ~ }
+
+  category.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    tags: [ 'api_platform.filter' ]
+    arguments: [ { id: 'exact', name: 'ipartial', brand.name: 'ipartial' } ]
+
+  category.order_filter:
+    parent: 'api_platform.doctrine.orm.order_filter'
+    tags: [ 'api_platform.filter' ]
+    arguments: [ { name: ~ } ]
