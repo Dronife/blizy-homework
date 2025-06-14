@@ -8,7 +8,7 @@
           <NuxtLink to="/categories" active-class="text-blue-600" class="hover:text-blue-600">Categories</NuxtLink>
           <NuxtLink to="/brands" active-class="text-blue-600" class="hover:text-blue-600">Brands</NuxtLink>
           <NuxtLink to="/models" active-class="text-blue-600" class="hover:text-blue-600">Models</NuxtLink>
-          <!-- add more links here later -->
+          <NuxtLink to="/products" active-class="text-blue-600" class="hover:text-blue-600">Products</NuxtLink>
         </nav>
       </div>
     </header>

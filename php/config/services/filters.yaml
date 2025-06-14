@@ -18,7 +18,12 @@ services:
   product.search_filter:
     parent: 'api_platform.doctrine.orm.search_filter'
     tags: [ 'api_platform.filter' ]
-    arguments: [ { id: 'exact', category.name: 'ipartial', model.name: 'ipartial', grade: 'exact', storage: 'ipartial', price: 'ipartial', color: 'impartial'} ]
+    arguments: [ { id: 'exact', category.name: 'ipartial', category.brand.name: 'ipartial', model.name: 'ipartial', grade: 'exact', color: 'impartial'} ]
+
+  product.numeric_filter:
+    parent: 'api_platform.doctrine.orm.range_filter'
+    tags: [ 'api_platform.filter' ]
+    arguments: [ { storage: ~, price: ~ } ]
 
   product.order_filter:
     parent: 'api_platform.doctrine.orm.order_filter'

@@ -8,7 +8,9 @@ App\Entity\Product:
     ApiPlatform\Metadata\Get:
       filters:
         - 'product.search_filter'
+        - 'product.range_filter'
     ApiPlatform\Metadata\GetCollection:
       filters:
         - 'product.search_filter'
         - 'product.order_filter'
+        - 'product.numeric_filter'
