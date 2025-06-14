@@ -7,7 +7,7 @@ App\Entity\Product:
     ApiPlatform\Metadata\Delete: ~
     ApiPlatform\Metadata\Get:
       filters:
-        - 'model.search_filter'
+        - 'product.search_filter'
     ApiPlatform\Metadata\GetCollection:
       filters:
         - 'product.search_filter'
