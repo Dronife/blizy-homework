@@ -11,7 +11,6 @@ class ProductTransformer:
         self._model_cache = model_repository.fetch_all()
 
     def get_model(self, model_string: str) -> Model | None:
-        print("Model string: ", model_string)
         for model in self._model_cache:
             if model_string == model.name:
                 return model

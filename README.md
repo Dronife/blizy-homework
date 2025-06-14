@@ -45,10 +45,12 @@
   - Run `pip install -r requirements.txt`
   - Then run `python main.py scrape-fundamentals`
   - Then run `python main.py scrape-products`
+  - <span style="color:red">If the `python main.py scrape-products` run it again. (Problem is that models are not loaded after they are inserted - would need to look at it to fix)</span>
   - That's it it should work
 - ### GO to `localhost:3000`
 - 
 ## Considerations:
+- Need to fix `model` load when products are synced to database. Problem is that after models are inserted and tried to fetch again data is empty.
 - Current parser could be improved, because sometimes model is not parsed correctly
 - Possibility to go inside "detailed" page and take all the info <- can ban ip if not careful enough
 - Would need test
