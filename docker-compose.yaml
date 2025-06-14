@@ -63,11 +63,15 @@ services:
       - blizy-network
 
   db-ui:
+    depends_on:
+      - db
     container_name: blizy_db_ui
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - blizy-network
 
 networks:
   blizy-network:

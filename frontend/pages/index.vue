@@ -1,8 +1,6 @@
 <script setup lang="ts">
-
-const { categories, pending, error } = useCategories()
 </script>
 
 <template>
-  <h1>Index page ??</h1>
+  <h1>Hello this is simple UI, good luck have fun. You can navigate with menu up top.</h1>
 </template>
