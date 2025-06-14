@@ -1,0 +1,9 @@
+# php/config/serializer/Model.yaml
+App\Entity\Model:
+  attributes:
+    id:
+      groups: ['model']
+    name:
+      groups: ['model']
+    category:
+      groups: ['model']

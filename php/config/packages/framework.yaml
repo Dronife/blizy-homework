@@ -1,5 +1,9 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
+    serializer:
+        default_context:
+            enable_max_depth: true
+
     secret: '%env(APP_SECRET)%'
     annotations: false
     http_method_override: false

@@ -1,0 +1,11 @@
+# php/config/api_platform/Model.yaml
+App\Entity\Model:
+  normalizationContext:
+      groups: ['model']
+
+  operations:
+    ApiPlatform\Metadata\Get: ~
+    ApiPlatform\Metadata\GetCollection:
+      filters:
+        - 'model.search_filter'
+        - 'model.order_filter'

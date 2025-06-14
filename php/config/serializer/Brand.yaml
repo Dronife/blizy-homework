@@ -1,0 +1,8 @@
+# php/config/serializer/Brand.yaml
+App\Entity\Brand:
+  attributes:
+    id:
+      groups: ['model']
+    name:
+      groups: ['model']
+

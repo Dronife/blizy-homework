@@ -1,0 +1,10 @@
+# php/config/serializer/Category.yaml
+App\Entity\Category:
+  attributes:
+    id:
+      groups: ['model']
+    name:
+      groups: ['model']
+    brand:
+      groups: ['model']
+

@@ -1,0 +1,4 @@
+# php/config/api_platform/Category.yaml
+App\Entity\Category:
+  operations:
+    ApiPlatform\Metadata\Get: ~

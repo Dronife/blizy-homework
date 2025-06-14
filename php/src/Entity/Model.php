@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ModelRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ModelRepository::class)]
 class Model
@@ -14,10 +16,12 @@ class Model
     private ?int $id = null;
 
     #[ORM\Column(length: 255, unique: true, nullable: false)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
     private ?Category $category = null;
 
     public function getId(): ?int
