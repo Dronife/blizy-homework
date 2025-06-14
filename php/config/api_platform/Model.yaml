@@ -1,10 +1,22 @@
 # php/config/api_platform/Model.yaml
 App\Entity\Model:
+  category:
+    openapiContext:
+      type: string
+      example: '/api/categories/{int}'
+
   normalizationContext:
       groups: ['model']
+  denormalizationContext:
+    groups: [ 'model:input' ]
 
   operations:
-    ApiPlatform\Metadata\Get: ~
+    ApiPlatform\Metadata\Post: ~
+    ApiPlatform\Metadata\Put: ~
+    ApiPlatform\Metadata\Delete: ~
+    ApiPlatform\Metadata\Get:
+      filters:
+        - 'model.search_filter'
     ApiPlatform\Metadata\GetCollection:
       filters:
         - 'model.search_filter'

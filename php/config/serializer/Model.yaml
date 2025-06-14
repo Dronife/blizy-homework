@@ -4,6 +4,8 @@ App\Entity\Model:
     id:
       groups: ['model']
     name:
-      groups: ['model']
+      groups: ['model', 'model:input']
     category:
-      groups: ['model']
+      groups: ['model', 'model:input']
+      openapi_context:
+        example: '/api/categories/60'
