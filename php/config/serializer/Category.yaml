@@ -2,9 +2,9 @@
 App\Entity\Category:
   attributes:
     id:
-      groups: ['model', 'model:input']
+      groups: [ 'product', 'model', 'model:input' ]
     name:
-      groups: ['model']
+      groups: [ 'model', 'product' ]
     brand:
-      groups: ['model']
+      groups: [ 'model', 'product']
 

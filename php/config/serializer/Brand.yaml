@@ -4,5 +4,5 @@ App\Entity\Brand:
     id:
       groups: ['model']
     name:
-      groups: ['model']
+      groups: ['model', 'product']
 

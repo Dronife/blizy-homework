@@ -1,0 +1,19 @@
+# php/config/serializer/Product.yaml
+App\Entity\Product:
+  attributes:
+    id:
+      groups: [ 'product' ]
+    category:
+      groups: [ 'product' ]
+    model:
+      groups: [ 'product' ]
+    grade:
+      groups: [ 'product' ]
+    storage:
+      groups: [ 'product' ]
+    condition:
+      groups: [ 'product' ]
+    price:
+      groups: [ 'product' ]
+    color:
+      groups: [ 'product' ]

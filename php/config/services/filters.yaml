@@ -8,9 +8,20 @@ services:
   model.search_filter:
     parent: 'api_platform.doctrine.orm.search_filter'
     tags: [ 'api_platform.filter' ]
-    arguments: [ { id: 'exact', name: 'ipartial' } ]
+    arguments: [ { id: 'exact', name: 'ipartial', category.name: 'ipartial' } ]
 
   model.order_filter:
     parent: 'api_platform.doctrine.orm.order_filter'
     tags: [ 'api_platform.filter' ]
     arguments: [ { name: ~ } ]
+
+  product.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    tags: [ 'api_platform.filter' ]
+    arguments: [ { id: 'exact', category.name: 'ipartial', model.name: 'ipartial', grade: 'exact', storage: 'ipartial', price: 'ipartial', color: 'impartial'} ]
+
+  product.order_filter:
+    parent: 'api_platform.doctrine.orm.order_filter'
+    tags: [ 'api_platform.filter' ]
+    arguments:
+      - { category.name: ~, model.name: ~, grade: ~, storage: ~, price: ~, color: ~ }

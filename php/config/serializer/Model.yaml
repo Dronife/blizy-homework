@@ -2,10 +2,8 @@
 App\Entity\Model:
   attributes:
     id:
-      groups: ['model']
+      groups: ['model', 'product']
     name:
-      groups: ['model', 'model:input']
+      groups: ['model', 'model:input', 'product']
     category:
       groups: ['model', 'model:input']
-      openapi_context:
-        example: '/api/categories/60'

@@ -1,0 +1,14 @@
+# php/config/api_platform/Product.yaml
+App\Entity\Product:
+  normalizationContext:
+    groups: ['product']
+
+  operations:
+    ApiPlatform\Metadata\Delete: ~
+    ApiPlatform\Metadata\Get:
+      filters:
+        - 'model.search_filter'
+    ApiPlatform\Metadata\GetCollection:
+      filters:
+        - 'product.search_filter'
+        - 'product.order_filter'
