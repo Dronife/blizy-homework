@@ -2,7 +2,7 @@
 App\Entity\Brand:
   attributes:
     id:
-      groups: ['model', 'category']
+      groups: ['model', 'category', 'brand']
     name:
-      groups: ['model', 'product', 'category']
+      groups: ['model', 'product', 'category', 'brand']
 

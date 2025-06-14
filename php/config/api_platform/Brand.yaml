@@ -1,0 +1,14 @@
+# php/config/api_platform/Brand.yaml
+App\Entity\Brand:
+  normalizationContext:
+    groups: [ 'brand' ]
+
+  operations:
+    ApiPlatform\Metadata\Get:
+      filters:
+        - 'brand.search_filter'
+        - 'brand.order_filter'
+    ApiPlatform\Metadata\GetCollection:
+      filters:
+        - 'brand.search_filter'
+        - 'brand.order_filter'
