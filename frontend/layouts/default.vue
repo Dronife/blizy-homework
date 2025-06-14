@@ -6,6 +6,7 @@
         <NuxtLink to="/" class="text-xl font-semibold">MyShop Admin</NuxtLink>
         <nav class="flex gap-6 text-sm font-medium">
           <NuxtLink to="/categories" active-class="text-blue-600" class="hover:text-blue-600">Categories</NuxtLink>
+          <NuxtLink to="/brands" active-class="text-blue-600" class="hover:text-blue-600">Brands</NuxtLink>
           <!-- add more links here later -->
         </nav>
       </div>
