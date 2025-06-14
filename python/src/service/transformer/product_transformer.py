@@ -6,14 +6,13 @@ from src.enumerators.grade import GradeEnum
 from src.repository.model_repository import model_repository
 
 class ProductTransformer:
-    _model_cache: list[ProductModel] | None = None
     def __init__(self):
-        if ProductTransformer._model_cache is None:
-            ProductTransformer._model_cache = model_repository.fetch_all()
+        # there can be an option that it calls multiple times, it should initiate one time
+        self._model_cache = model_repository.fetch_all()
 
     def get_model(self, model_string: str) -> Model | None:
         print("Model string: ", model_string)
-        for model in ProductTransformer._model_cache:
+        for model in self._model_cache:
             if model_string == model.name:
                 return model
         return None
