@@ -1,0 +1,1 @@
+export var ITEMS_PER_PAGE = 10
